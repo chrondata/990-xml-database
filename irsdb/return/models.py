@@ -6213,7 +6213,7 @@ class SkdASpprtdOrgInfrmtn(models.Model):
     OthrSpprtAmt = models.BigIntegerField(null=True, blank=True)
     # Line number:  Part I Line 12g Column (vi)  Description:  Estimated value of diversion  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/OtherSupportAmt 
 
-    EIN = models.CharField(null=True, blank=True, max_length=9)
+    SpprtdOrgEIN = models.CharField(null=True, blank=True, max_length=9)
     # Line number:  Part I Line 12g Column (ii)  Description:  EIN of supported organization  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/EIN 
 
     GvrnngDcmntLstdInd = models.CharField(null=True, blank=True, max_length=5)
@@ -6923,6 +6923,7 @@ class skedd_part_ii(models.Model):
 
     SttsEsmntsHldCnt = models.BigIntegerField(null=True, blank=True)
     # Line number: Part II Line 4  Description: Number of states in which the organization held an easement  most recent xpath: /IRS990ScheduleD/StatesEasementsHeldCnt 
+
 
     WrttnPlcyMntrngInd = models.CharField(null=True, blank=True, max_length=5)
     # Line number: Part II Line 5  Description: Does the organization have a written policy regarding the periodic monitoring, inspection, and enforcement of the easements it holds?  most recent xpath: /IRS990ScheduleD/WrittenPolicyMonitoringInd 
