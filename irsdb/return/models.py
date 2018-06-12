@@ -3955,7 +3955,7 @@ class pf_part_vi(models.Model):
     EsPnltyAmt = models.BigIntegerField(null=True, blank=True)
     # Line number: Part VI Line 8  Description: Penalty for Underpayment  most recent xpath: /IRS990PF/ExciseTaxBasedOnInvstIncmGrp/EsPenaltyAmt 
 
-    AppldTESTxAmt = models.BigIntegerField(null=True, blank=True)
+    AmtCrdtNxtYr = models.BigIntegerField(null=True, blank=True)
     # Line number: Part VI Line 11  Description: Amount Credited to Next Year  most recent xpath: /IRS990PF/ExciseTaxBasedOnInvstIncmGrp/AppliedToESTaxAmt 
 
     RfndAmt = models.BigIntegerField(null=True, blank=True)
@@ -7355,7 +7355,7 @@ class SkdASpprtdOrgInfrmtn(models.Model):
     OthrSpprtAmt = models.BigIntegerField(null=True, blank=True)
     # Line number:  Part I Line 12g Column (vi)  Description:  Estimated value of diversion  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/OtherSupportAmt 
 
-    EIN = models.CharField(null=True, blank=True, max_length=9)
+    SpprtdOrgEIN = models.CharField(null=True, blank=True, max_length=9)
     # Line number:  Part I Line 12g Column (ii)  Description:  EIN of supported organization  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/EIN 
 
     GvrnngDcmntLstdInd = models.CharField(null=True, blank=True, max_length=5)
@@ -7473,7 +7473,7 @@ class SkdASpprtdOrgInfrmtn(models.Model):
     OthrSpprtAmt = models.BigIntegerField(null=True, blank=True)
     # Line number:  Part I Line 12g Column (vi)  Description:  Estimated value of diversion  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/OtherSupportAmt 
 
-    EIN = models.CharField(null=True, blank=True, max_length=9)
+    SpprtdOrgEIN = models.CharField(null=True, blank=True, max_length=9)
     # Line number:  Part I Line 12g Column (ii)  Description:  EIN of supported organization  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/EIN 
 
     GvrnngDcmntLstdInd = models.CharField(null=True, blank=True, max_length=5)
