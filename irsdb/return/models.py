@@ -6930,6 +6930,7 @@ class skedd_part_ii(models.Model):
     SttsEsmntsHldCnt = models.BigIntegerField(null=True, blank=True)
     # Line number: Part II Line 4  Description: Number of states in which the organization held an easement  most recent xpath: /IRS990ScheduleD/StatesEasementsHeldCnt 
 
+
     WrttnPlcyMntrngInd = models.CharField(null=True, blank=True, max_length=5)
     # Line number: Part II Line 5  Description: Does the organization have a written policy regarding the periodic monitoring, inspection, and enforcement of the easements it holds?  most recent xpath: /IRS990ScheduleD/WrittenPolicyMonitoringInd 
 
