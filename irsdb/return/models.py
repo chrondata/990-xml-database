@@ -3465,7 +3465,7 @@ class pf_part_vi(models.Model):
     EsPnltyAmt = models.BigIntegerField(null=True, blank=True)
     # Line number: Part VI Line 8  Description: Penalty for Underpayment  most recent xpath: /IRS990PF/ExciseTaxBasedOnInvstIncmGrp/EsPenaltyAmt 
 
-    AppldTESTxAmt = models.BigIntegerField(null=True, blank=True)
+    AmtCrdtNxtYr = models.BigIntegerField(null=True, blank=True)
     # Line number: Part VI Line 11  Description: Amount Credited to Next Year  most recent xpath: /IRS990PF/ExciseTaxBasedOnInvstIncmGrp/AppliedToESTaxAmt 
 
     RfndAmt = models.BigIntegerField(null=True, blank=True)
