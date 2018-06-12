@@ -12,10 +12,9 @@ class Command(BaseCommand):
         for table in all_tables:
             if table.startswith('return'):
                 index_name = "xx_%s" % table
-                if table.startswith('return_skdk'):
-                    query = "create index %s on %s (object_id, ein, \"documentId\")" % (index_name, table)
-
-                else:
-                    query = "create index %s on %s (object_id, ein)" % (index_name, table)
+                #if table.startswith('return_skdk'):
+                #    query = "create index %s on %s (object_id, ein, \"documentId\")" % (index_name, table)
+                #else:
+                query = "create index %s on %s (object_id, ein)" % (index_name, table)
                 print("Running query: '%s' " % query)
                 self.cursor.execute(query)

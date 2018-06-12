@@ -3465,7 +3465,7 @@ class pf_part_vi(models.Model):
     EsPnltyAmt = models.BigIntegerField(null=True, blank=True)
     # Line number: Part VI Line 8  Description: Penalty for Underpayment  most recent xpath: /IRS990PF/ExciseTaxBasedOnInvstIncmGrp/EsPenaltyAmt 
 
-    AppldTESTxAmt = models.BigIntegerField(null=True, blank=True)
+    AmtCrdtNxtYr = models.BigIntegerField(null=True, blank=True)
     # Line number: Part VI Line 11  Description: Amount Credited to Next Year  most recent xpath: /IRS990PF/ExciseTaxBasedOnInvstIncmGrp/AppliedToESTaxAmt 
 
     RfndAmt = models.BigIntegerField(null=True, blank=True)
@@ -6220,7 +6220,7 @@ class SkdASpprtdOrgInfrmtn(models.Model):
     OthrSpprtAmt = models.BigIntegerField(null=True, blank=True)
     # Line number:  Part I Line 12g Column (vi)  Description:  Estimated value of diversion  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/OtherSupportAmt 
 
-    EIN = models.CharField(null=True, blank=True, max_length=9)
+    SpprtdOrgEIN = models.CharField(null=True, blank=True, max_length=9)
     # Line number:  Part I Line 12g Column (ii)  Description:  EIN of supported organization  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/EIN 
 
     GvrnngDcmntLstdInd = models.CharField(null=True, blank=True, max_length=5)
@@ -6812,7 +6812,6 @@ class SkdCSctn527PltclOrg(models.Model):
 
     FrgnAddrss_AddrssLn1Txt = models.CharField(null=True, blank=True, max_length=35)
     # Line number: Part I-C Line 5(b)  Description:  Address line 1  most recent xpath: /IRS990ScheduleC/Section527PoliticalOrgGrp/ForeignAddress/AddressLine1Txt 
-
     FrgnAddrss_AddrssLn2Txt = models.CharField(null=True, blank=True, max_length=35)
     # Line number: Part I-C Line 5(b)  Description:  Address line 2  most recent xpath: /IRS990ScheduleC/Section527PoliticalOrgGrp/ForeignAddress/AddressLine2Txt 
 
@@ -6935,9 +6934,6 @@ class skedd_part_ii(models.Model):
     # Line number: Part II Line 5  Description: Does the organization have a written policy regarding the periodic monitoring, inspection, and enforcement of the easements it holds?  most recent xpath: /IRS990ScheduleD/WrittenPolicyMonitoringInd 
 
     StffHrsSpntEnfrcmntCnt = models.DecimalField(null=True, blank=True, max_digits=22, decimal_places=2)
-    # Line number: Part II Line 6  Description: Staff hours devoted to monitoring or enforcing easements during the year  most recent xpath: /IRS990ScheduleD/StaffHoursSpentEnforcementCnt 
-
-    ExpnssIncrrdEnfrcmntAmt = models.BigIntegerField(null=True, blank=True)
     # Line number: Part II Line 7  Description: Amount of expenses incurred in monitoring or enforcing easements during the taxable year  most recent xpath: /IRS990ScheduleD/ExpensesIncurredEnforcementAmt 
 
     Sctn170hRqrStsfdInd = models.CharField(null=True, blank=True, max_length=5)
