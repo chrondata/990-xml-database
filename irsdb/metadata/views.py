@@ -23,8 +23,7 @@ try:
     FILE_SYSTEM_BASE = settings.FILE_SYSTEM_BASE
 except (ImportError, AttributeError):
     FILE_SYSTEM_BASE = ''
-
-# When set to true will 'cache' a baked version of the page
+# When set to true will 'cache' a baked version of the page 
 # To run a full bake, run a 'scrape' of every page that needs update
 # Then deploy files
 # Any new static files need to be moved into place, this is just a hack
