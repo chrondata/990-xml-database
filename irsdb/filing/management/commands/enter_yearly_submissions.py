@@ -13,47 +13,21 @@ BATCH_SIZE = 10000
 
 class Command(BaseCommand):
     help = '''
-    Read the yearly csv file line by line and add new lines if 
+    Read the yearly csv file line by line and add new lines if
     they don't exist. Lines are added in bulk at the end.
     '''
 
     def add_arguments(self, parser):
         # Positional arguments
         parser.add_argument('year', nargs='+', type=int)
-        parser.add_argument('--download', action='store_true') # force download
-        parser.add_argument('--enter', action='store_true') # force it to enter
-
 
     def handle(self, *args, **options):
         for year in options['year']:
-            irs_file_url = 'https://s3.amazonaws.com/irs-form-990/index_%s.csv' % year
-            irs_file_len = 0
-
-            force_download = options['download']
             local_file_path = os.path.join(INDEX_DIRECTORY, "index_%s.csv" % year)
 
-            if not force_download:
-                response = requests.head(irs_file_url)
-                if response.status_code == 404:
-                    print('index_%s.csv is not available for download.' % year)
-                    continue
-                else:
-                    irs_file_len = int(response.headers['Content-Length'])
-
-
-            # Verify index file has been downloaded.
-            if not os.path.isfile(local_file_path) or force_download:
+            if not os.path.exists(local_file_path):
+                irs_file_url = 'https://s3.amazonaws.com/irs-form-990/index_%s.csv' % year
                 print('Downloading index_%s.csv...' % year)
-                stream_download(irs_file_url, local_file_path)
-                print('Done!')
-
-            local_file_len = os.path.getsize(local_file_path)
-            if irs_file_len == local_file_len:
-                print('File index_%s.csv has not changed since the last download.' % year)
-                if not options['enter']:
-                    continue
-            else:
-                print('index_%s.csv has changed. Downloading updated file...' % year)
                 stream_download(irs_file_url, local_file_path)
                 print('Done!')
 
@@ -68,7 +42,13 @@ class Command(BaseCommand):
             next(reader)
             count = 0
             for line in reader:
-                (return_id, filing_type, ein, tax_period, sub_date, taxpayer_name, return_type, dln, object_id) = line
+                try:
+                    (return_id, filing_type, ein, tax_period, sub_date, taxpayer_name, return_type, dln, object_id) = line
+                except ValueError as err:
+                    print("Error with line: {line}".format(line=line))
+                    if year == 2014:
+                        print('Did you fix the 2014 index file? See the README for instructions.')
+                    raise
 
                 try:
                     obj = Filing.objects.get(object_id=object_id)

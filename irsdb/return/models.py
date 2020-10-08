@@ -3465,7 +3465,7 @@ class pf_part_vi(models.Model):
     EsPnltyAmt = models.BigIntegerField(null=True, blank=True)
     # Line number: Part VI Line 8  Description: Penalty for Underpayment  most recent xpath: /IRS990PF/ExciseTaxBasedOnInvstIncmGrp/EsPenaltyAmt 
 
-    AppldTESTxAmt = models.BigIntegerField(null=True, blank=True)
+    AmtCrdtNxtYr = models.BigIntegerField(null=True, blank=True)
     # Line number: Part VI Line 11  Description: Amount Credited to Next Year  most recent xpath: /IRS990PF/ExciseTaxBasedOnInvstIncmGrp/AppliedToESTaxAmt 
 
     RfndAmt = models.BigIntegerField(null=True, blank=True)
@@ -6113,6 +6113,13 @@ class skeda_part_v(models.Model):
     DstrbtnAllctns_ExcssDstrCyvTNxtYrAmt = models.BigIntegerField(null=True, blank=True)
     # Line number:  Part V Section E Line 7(i)  Description:  Excess distribution carryover to next year  most recent xpath: /IRS990ScheduleA/DistributionAllocationsGrp/ExcessDistriCyovToNextYrAmt 
 
+    ExcssDstrbtnCyvYr4Amt = models.BigIntegerField(null=True, blank=True)
+    # Line number:  Part V Section E Line 3(b)  Description:  Excess distributions carryover - year 4  most recent xpath: /IRS990ScheduleA/DistributionAllocationsGrp/ExcessDistributionCyovYr4Amt 
+
+    ExcssFrmYr5Amt = models.BigIntegerField(null=True, blank=True)
+    # Line number:  Part V Section E Line 8a  Description:  Excess from year 5  most recent xpath: /IRS990ScheduleA/DistributionAllocationsGrp/ExcessFromYear5Amt 
+
+
     DstrbtnAllctns_ExcssFrmYr4Amt = models.BigIntegerField(null=True, blank=True)
     # Line number:  Part V Section E Line 8b  Description:  Excess from year 4  most recent xpath: /IRS990ScheduleA/DistributionAllocationsGrp/ExcessFromYear4Amt 
 
@@ -6213,7 +6220,7 @@ class SkdASpprtdOrgInfrmtn(models.Model):
     OthrSpprtAmt = models.BigIntegerField(null=True, blank=True)
     # Line number:  Part I Line 12g Column (vi)  Description:  Estimated value of diversion  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/OtherSupportAmt 
 
-    EIN = models.CharField(null=True, blank=True, max_length=9)
+    SpprtdOrgEIN = models.CharField(null=True, blank=True, max_length=9)
     # Line number:  Part I Line 12g Column (ii)  Description:  EIN of supported organization  most recent xpath: /IRS990ScheduleA/SupportedOrgInformationGrp/EIN 
 
     GvrnngDcmntLstdInd = models.CharField(null=True, blank=True, max_length=5)
@@ -6805,7 +6812,6 @@ class SkdCSctn527PltclOrg(models.Model):
 
     FrgnAddrss_AddrssLn1Txt = models.CharField(null=True, blank=True, max_length=35)
     # Line number: Part I-C Line 5(b)  Description:  Address line 1  most recent xpath: /IRS990ScheduleC/Section527PoliticalOrgGrp/ForeignAddress/AddressLine1Txt 
-
     FrgnAddrss_AddrssLn2Txt = models.CharField(null=True, blank=True, max_length=35)
     # Line number: Part I-C Line 5(b)  Description:  Address line 2  most recent xpath: /IRS990ScheduleC/Section527PoliticalOrgGrp/ForeignAddress/AddressLine2Txt 
 
@@ -6928,7 +6934,7 @@ class skedd_part_ii(models.Model):
     # Line number: Part II Line 5  Description: Does the organization have a written policy regarding the periodic monitoring, inspection, and enforcement of the easements it holds?  most recent xpath: /IRS990ScheduleD/WrittenPolicyMonitoringInd 
 
     StffHrsSpntEnfrcmntCnt = models.DecimalField(null=True, blank=True, max_digits=22, decimal_places=2)
-    # Line number: Part II Line 6  Description: Staff hours devoted to monitoring or enforcing easements during the year  most recent xpath: /IRS990ScheduleD/StaffHoursSpentEnforcementCnt 
+    # Line number: Part II Line 7  Description: Amount of expenses incurred in monitoring or enforcing easements during the taxable year  most recent xpath: /IRS990ScheduleD/ExpensesIncurredEnforcementAmt 
 
     ExpnssIncrrdEnfrcmntAmt = models.BigIntegerField(null=True, blank=True)
     # Line number: Part II Line 7  Description: Amount of expenses incurred in monitoring or enforcing easements during the taxable year  most recent xpath: /IRS990ScheduleD/ExpensesIncurredEnforcementAmt 

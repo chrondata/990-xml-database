@@ -12,6 +12,7 @@ class Command(BaseCommand):
         for table in all_tables:
             if table.startswith('return'):
                 index_name = "xx_%s" % table
-                query = "drop index if exists %s" % (index_name)
+                # query = "drop index if exists %s" % (index_name)
+                query = 'alter table {0} drop index {1}'.format(table, index_name)
                 print("Running query: '%s' " % query)
                 self.cursor.execute(query)
