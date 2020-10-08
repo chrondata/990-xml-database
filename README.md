@@ -17,7 +17,9 @@ Django app to consume and store 990 data and metadata. Depends on [IRSx](https:/
 
 1. run `python manage.py makemigrations metadata` to generate the metadata migrations, and then run them with `python manage.py migrate metadata`.
 
-2. Load the metadata with the management command: `python manage.py load_metadata`. This command erases the metadata before loading, so it can be rerun if it somehow breaks in the middle.
+2. Load the metadata with from source csv files in generated\_schemas with the management command: `python manage.py load_metadata`. This command erases the metadata before loading, so it can be rerun if it somehow breaks in the middle.
+
+3. If the csv files have changed you can generate migrations for the db by generating the models with `python manage.py generate_schemas_from_metadata` which puts the new models file in generated\_schemas/ as `django_models_auto.py` and then moving the generated models file into return/models.py and running `python manage.py makemigrations return`. 
 
 ### Part 3: index file data 
 
@@ -161,3 +163,5 @@ Then enter the filings into the relational database with:
 	Processed a total of 24000 filings
 	Processed a total of 24043 filings
 	Done
+	
+This script finds filings where `submission_year` is the entered year and `parse_complete` has not been set to True. It enters them in groups of 100 and sets `parse_complete` to True after each batch has completed. The script is fairly fault tolerant, but if it dies in the middle it's important to remove all the half entered filings where `parse_started` = True and `parse_complete` is not True. (By default it is null, so don't try to match on `parse_complete` = False). 
