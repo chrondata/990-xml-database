@@ -11,7 +11,7 @@ I did this merge on the GitHub site, and it merged without conflict.
 ## Merge upstream master branch into forked master branch
 There will likely be conflicts to resolve, likely in `return/models.py`. Our forked version of this repo namely refers to two fields differently from the upstream repo. This is a necessity because the field names from the upstream repo are identical when case is ignored, and MySQL ignores casing in field names, while Postgres does not.
 
-I did this merge using the GitHub Desktop app, which enables me to edit conflicts in my own text editor.
+I did this merge on my local machine rather than on the remote server on which the parser runs, which enabled me to edit conflicts in my own text editor rather than in VIM. I highly recommend working locally if possible.
 
 When resolving these conflicts, take note of all field names that end up varying from the field names in the upstream version.
 
